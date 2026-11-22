@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4563e9">
+    <meta name="description" content="EDU REMINDER - Smart Productivity Application">
+    <title>EDU REMINDER — Plan Smart, Stay Organized</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="#dashboard" class="brand">
+            <span class="brand-icon">E</span>
+            <span>
+                EDU <span class="brand-blue">REMINDER.</span>
+                <small>SMART PRODUCTIVITY</small>
+            </span>
+        </a>
+
+        <p class="sidebar-label">MENU UTAMA</p>
+
+        <nav class="side-nav">
+            <a href="#dashboard" class="nav-link active">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a><a href="#notifikasi" class="nav-link">
+    <span class="nav-icon">🔔</span>
+    <span>Notifikasi</span>
+    <span id="notificationBadge" class="notification-badge">0</span>
+</a>
+
+            <a href="#tugas" class="nav-link">
+                <span class="nav-icon">▤</span>
+                Tugas Saya
+            </a>
+
+            <a href="#kalender" class="nav-link">
+                <span class="nav-icon">▦</span>
+                Kalender
+            </a>
+
+            <a href="#jadwal" class="nav-link">
+    <span class="nav-icon">◷</span>
+    <span>Jadwal Kegiatan</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <div class="tip-icon">✦</div>
+                <strong>Produktif Setiap Hari</strong>
+                <p>Atur prioritas, kelola waktu, dan selesaikan tujuanmu satu per satu.</p>
+            </div>
+
+            <div class="sidebar-footer">
+                EDU REMINDER · 2026
+            </div>
+        </div>
+
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" type="button"
+                    aria-label="Buka menu">☰</button>
+
+                <div class="breadcrumb">
+                    Workspace <span>/</span>
+                    <strong>Dashboard</strong>
+                </div>
+            </div>
+
+            
+<div class="topbar-right">
+    <span class="today-label" id="headerDate"></span>
+
+    <button
+        type="button"
+        id="enableNotificationsBtn"
+        class="notification-toggle"
+        title="Aktifkan notifikasi"
+    >
+        <span>♧</span>
+        <span id="notificationButtonText">Aktifkan Notifikasi</span>
+    </button>
+
+    <div class="profile-avatar">ER</div>
+</div>
+
+
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <!-- DASHBOARD -->
+            <section class="page-section" id="dashboard">
+
+                <div class="welcome-panel">
+
+                    <div class="welcome-copy">
+                        <span class="welcome-tag">YOUR PRODUCTIVITY SPACE</span>
+
+                        <h2>Rencanakan Hari Ini,<br>
+                            <span>Raih Tujuanmu.</span>
+                        </h2>
+
+                        <p>
+                            Kelola tugas, atur jadwal, dan pantau produktivitasmu
+                            dalam satu ruang kerja yang lebih terorganisasi.
+                        </p>
+
+                        <a href="#tugas" class="welcome-button">
+                            Mulai Kelola Tugas <span>→</span>
+                        </a>
+                    </div>
+
+                    <div class="welcome-decoration">
+                        <div class="decoration-circle circle-one"></div>
+                        <div class="decoration-circle circle-two"></div>
+
+                        <div class="decoration-card">
+                            <div class="decoration-check">✓</div>
+                            <div>
+                                <strong>Stay Productive!</strong>
+                                <small>One task at a time.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- STATISTICS -->
+                <div class="section-heading">
+                    <h2>Ringkasan Produktivitas</h2>
+                    <p>Pantau perkembangan aktivitasmu.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-caption">TOTAL TUGAS</span>
+                            <span class="stat-icon blue-icon">▤</span>
+                        </div>
+                        <h3 id="totalTugas">0</h3>
+                        <p>Seluruh tugas tercatat</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-caption">TUGAS SELESAI</span>
+                            <span class="stat-icon green-icon">✓</span>
+                        </div>
+                        <h3 id="tugasSelesai">0</h3>
+                        <p>Tugas yang telah diselesaikan</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-caption">TOTAL JADWAL</span>
+                            <span class="stat-icon purple-icon">◷</span>
+                        </div>
+                        <h3 id="totalJadwal">0</h3>
+                        <p>Agenda kegiatan tersimpan</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-caption">PROGRES TUGAS</span>
+                            <span class="stat-icon orange-icon">↗</span>
+                        </div>
+                        <h3 id="progressPercent">0%</h3>
+                        <p>Persentase penyelesaian</p>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- DASHBOARD OVERVIEW -->
+                <div class="dashboard-grid">
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Aktivitas Tugas</h2>
+                                <p>Lima tugas terbaru yang kamu catat.</p>
+                            </div>
+                            <a href="#tugas" class="text-link">Lihat semua →</a>
+                        </div>
+
+                        <ul class="recent-task-list" id="recentTaskList"></ul>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Agenda Mendatang</h2>
+                                <p>Kegiatan yang akan datang.</p>
+                            </div>
+                            <a href="#jadwal" class="text-link">Lihat semua →</a>
+                        </div>
+
+                        <ul class="upcoming-list" id="upcomingScheduleList"></ul>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- TASK MANAGEMENT -->
+            <section class="page-section" id="tugas">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">TASK MANAGEMENT</p>
+                        <h1>Manajemen Tugas</h1>
+                        <p class="page-description">
+                            Catat, prioritaskan, dan selesaikan semua tugasmu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD TASK FORM -->
+                <article class="panel form-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Tambah Tugas Baru</h2>
+                            <p>Masukkan informasi tugas yang ingin dikerjakan.</p>
+                        </div>
+                    </div>
+
+                    <form id="taskForm" class="modern-form">
+
+                        <div class="form-field full-field">
+                            <label for="taskInput">Nama Tugas</label>
+                            <input
+                                type="text"
+                                id="taskInput"
+                                placeholder="Contoh: Menyelesaikan makalah..."
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="taskPriority">Prioritas</label>
+                            <select id="taskPriority">
+                                <option value="Normal">Normal</option>
+                                <option value="Tinggi">Tinggi</option>
+                                <option value="Rendah">Rendah</option>
+                            </select>
+                        </div>
+<div class="form-field">
+    <label for="taskDueDate">Tanggal Tenggat</label>
+    <input
+        type="date"
+        id="taskDueDate"
+    >
+</div>
+                        <div class="form-field">
+    <label for="taskDueTime">Jam Tenggat</label>
+    <input
+        type="time"
+        id="taskDueTime"
+    >
+</div>
+
+                        <div class="form-actions full-field">
+                            <button type="submit" class="primary-button">
+                                + Tambahkan Tugas
+                            </button>
+                        </div>
+
+                    </form>
+
+                </article>
+
+                <!-- TASK LIST -->
+                <article class="panel task-manager-panel">
+
+                    <div class="panel-heading task-heading">
+                        <div>
+                            <h2>Daftar Tugas Saya</h2>
+                            <p>Kelola dan pantau status penyelesaian tugas.</p>
+                        </div>
+
+                        <div class="task-filter">
+                            <select id="taskFilter" aria-label="Filter tugas">
+                                <option value="all">Semua Tugas</option>
+                                <option value="active">Belum Selesai</option>
+                                <option value="completed">Sudah Selesai</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <ul class="task-list" id="taskList"></ul>
+
+                </article>
+
+            </section>
+<!-- CALENDAR -->
+<section class="page-section" id="kalender">
+
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">CALENDAR MANAGEMENT</p>
+            <h1>Kalender Kegiatan</h1>
+            <p class="page-description">
+                Lihat dan pantau seluruh agenda kegiatanmu berdasarkan tanggal.
+            </p>
+        </div>
+    </div>
+
+    <div class="calendar-layout">
+
+        <!-- CALENDAR PANEL -->
+        <article class="panel calendar-panel">
+
+            <div class="calendar-toolbar">
+                <button type="button" id="prevMonth" aria-label="Bulan sebelumnya">‹</button>
+
+                <h2 id="calendarMonthTitle">November 2026</h2>
+
+                <button type="button" id="nextMonth" aria-label="Bulan berikutnya">›</button>
+            </div>
+
+            <button type="button" id="todayMonth" class="today-month-button">
+                Hari Ini
+            </button>
+
+            <div class="calendar-grid" id="calendarGrid"></div>
+
+        </article>
+
+        <!-- SELECTED DATE PANEL -->
+        <article class="panel selected-date-panel">
+
+            <div class="panel-heading">
+                <div>
+                    <h2 id="selectedDateTitle">Agenda Hari Ini</h2>
+                    <p>Daftar kegiatan berdasarkan tanggal yang dipilih.</p>
+                </div>
+            </div>
+
+            <ul class="selected-date-list" id="selectedDateList"></ul>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+            <!-- CALENDAR -->
+           
+<!-- JADWAL KEGIATAN -->
+<section class="page-section" id="jadwal">
+
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">SCHEDULE MANAGEMENT</p>
+            <h1>Jadwal Kegiatan</h1>
+            <p class="page-description">
+                Atur dan pantau semua kegiatanmu.
+            </p>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Tambah Jadwal</h2>
+                <p>Masukkan informasi kegiatan baru.</p>
+            </div>
+        </div>
+
+        <form id="scheduleForm" class="modern-form">
+
+            <div class="form-field">
+                <label for="scheduleName">Nama Kegiatan</label>
+                <input
+                    type="text"
+                    id="scheduleName"
+                    placeholder="Contoh: Kuliah Pengantar Pendidikan"
+                    required
+                >
+            </div>
+
+            <div class="form-field">
+                <label for="scheduleDate">Tanggal</label>
+                <input type="date" id="scheduleDate" required>
+            </div>
+
+            <div class="form-field">
+                <label for="scheduleStart">Jam Mulai</label>
+                <input type="time" id="scheduleStart" required>
+            </div>
+
+            <div class="form-field">
+                <label for="scheduleEnd">Jam Selesai</label>
+                <input type="time" id="scheduleEnd" required>
+            </div>
+
+            <div class="form-field full-field">
+                <label for="scheduleDescription">Deskripsi Kegiatan</label>
+                <textarea
+                    id="scheduleDescription"
+                    placeholder="Tambahkan keterangan kegiatan..."
+                ></textarea>
+            </div>
+
+            <div class="form-actions full-field">
+                <button type="submit" class="primary-button">
+                    + Tambahkan Jadwal
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Daftar Jadwal</h2>
+                <p>Semua kegiatan yang telah kamu tambahkan.</p>
+            </div>
+        </div>
+
+        <ul id="scheduleList" class="schedule-list"></ul>
+    </div>
+
+</section>
+
+
+           <!-- NOTIFICATION CENTER -->
+<section class="page-section" id="notifikasi">
+
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">NOTIFICATION CENTER</p>
+            <h1>Pusat Notifikasi</h1>
+            <p class="page-description">
+                Semua pengingat dan informasi aktivitasmu.
+            </p>
+        </div>
+
+        <button
+            type="button"
+            id="clearNotificationsBtn"
+            class="notification-toggle">
+            Hapus Semua
+        </button>
+    </div>
+
+    <article class="panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Riwayat Notifikasi</h2>
+                <p>Informasi tugas, jadwal, dan pengingatmu.</p>
+            </div>
+
+            <span id="notificationCount">0 pemberitahuan</span>
+        </div>
+
+        <ul id="notificationList" class="notification-list"></ul>
+    </article>
+
+</section>
+
+            <footer class="app-footer">
+                <p>© 2026 EDU REMINDER. Plan Smart. Stay Organized.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
